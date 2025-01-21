@@ -1,0 +1,29 @@
+version: '3'
+ 
+services:
+    
+    php:
+        build:
+            context: .
+        volumes:
+            - .:/var/www/html
+
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+            - '.:/var/www/html'
+        ports:
+            - "80:80"
+             
+    mysql:
+        image: mysql:8
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: tracker
+            MYSQL_ROOT_PASSWORD: root
+            SERVICE_NAME: mysql
+        volumes:
+            - ./docker/volume/mysql:/var/lib/mysql
+
