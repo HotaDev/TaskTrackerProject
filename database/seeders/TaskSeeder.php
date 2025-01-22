@@ -9,10 +9,14 @@ class TaskSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
     public function run(): void
     {
-        DB::table('tasks')->insert([[
+        DB::table('tasks')->insert(
+            [
+            [
                 'title'       => 'Задача1',
                 'description' => 'Описание к задаче1',
                 'due_date'    => '2025-01-20T15:00:00',
@@ -32,6 +36,7 @@ class TaskSeeder extends Seeder
             ],
             [
                 'title'       => 'Задача2',
+                'description' => null,
                 'due_date'    => '2025-01-18T15:00:00',
                 'create_date' => '2025-01-18T15:00:00',
                 'priority'    => 'средний',
@@ -58,12 +63,14 @@ class TaskSeeder extends Seeder
             ],
             [
                 'title'       => 'Задача5',
+                'description' => null,
                 'due_date'    => '2025-01-23T15:00:00',
                 'create_date' => '2025-01-22T15:00:00',
                 'priority'    => 'низкий',
                 'category'    => 'Работа',
                 'status'      => 'выполнена',
             ],
-        ]);
+            ]
+        );
     }
 }
